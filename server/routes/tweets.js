@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var cors = require('cors')
 
 var Twit = require('twit')
 
@@ -12,14 +13,17 @@ var T = new Twit({
 })
 
 /* GET users listing. */
-router.get('/:screen_name', function(req, res, next) {
-  console.log('req.query.screen_name=', req.query.screen_name)
-  T.get('statuses/user_timeline', {
-    screen_name: req.param.screen_name,
-    count:5,
-    trim_user: !!req.param.max_id,
-    max_id: req.query.max_id || '',
-  }, function (err, data, response) {
+router.get('/:screen_name/:max_id?', cors(), function(req, res, next) {
+  var params = {
+    screen_name: req.params.screen_name,
+    count: 5,
+    trim_user: !!req.params.max_id,
+    tweet_mode: 'extended',
+  }
+
+  req.params.max_id && (params.max_id = req.params.max_id)
+
+  T.get('statuses/user_timeline', params, function (err, data, response) {
     res.json(data)
   })
 })

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import LastTweets from '../LastTweets'
+
 import logo from './logo.svg'
 import stl from './index.css'
 
@@ -11,8 +13,10 @@ class App extends Component {
           <img src={logo} className={stl.logo} alt="logo" />
           <h1 className={stl.title}>Test Sii</h1>
         </header>
-        <section>
+        <section className={stl.flexContainer}>
           <LastTweets screenName="SIIcanada" count="5" />
+          <LastTweets screenName="CanadiensMTL" count="5" />
+          <LastTweets screenName="jechanceux" count="5" />
         </section>
       </section>
     );
