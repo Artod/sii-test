@@ -2,3 +2,17 @@
   text-align: left;
   padding: 10px;
 }
+
+.removeButton {
+  float:right;
+  z-index:1;
+}
+
+.createdAt {
+  color: grey;
+  font-size: 0.8em;
+}
+
+.card{
+  margin:20px auto;
+}

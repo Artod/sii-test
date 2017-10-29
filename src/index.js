@@ -8,13 +8,19 @@ ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
 /** TODO:
-  replace # and @
-  add new column
-    popup
-  design
-  settings webpack and build
+  \/replace # and @
+  \/add new column
+    \/popup
+  \/design
+  props
+
+  \/settings webpack and build
   hosting
+
   github and description
+
+  ?Errors (conn refused, limit exceed)
+  ?flask
 
   quest
 */
