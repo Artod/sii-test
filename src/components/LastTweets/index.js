@@ -100,7 +100,11 @@ class LastTweets extends Component {
       </article>)
     }
 
-    return <CircularProgress />
+    if (loading) {
+      return <CircularProgress />
+    }
+
+    return <p>Something went wrong. Try to reload page.</p>
   }
 }
 
