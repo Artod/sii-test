@@ -12,15 +12,15 @@ registerServiceWorker();
   \/add new column
     \/popup
   \/design
-  props
+  \/typeProps
 
   \/settings webpack and build
-  hosting
+  \/hosting
 
-  github and description
+  \/github and description
 
   ?Errors (conn refused, limit exceed)
   ?flask
 
-  quest
+  questions
 */

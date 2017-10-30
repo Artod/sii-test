@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import FlatButton from 'material-ui/FlatButton'
 import CircularProgress from 'material-ui/CircularProgress'
@@ -26,11 +27,12 @@ class LastTweets extends Component {
   }
 
   getTweets() {
-    let maxIdStr = (this.state.maxId ? `/${this.state.maxId}` : '')
+    const maxIdStr = (this.state.maxId ? `/${this.state.maxId}` : '')
+    const {count, screenName} = this.props
 
     this.setState({loading: true})
 
-    fetch(`${process.env.REACT_APP_API_URL}/tweets/${this.props.screenName}${maxIdStr}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/tweets/${screenName}${maxIdStr}?count=${count}`, {
     	method: 'get'
     }).then(res => res.json()).then(data => {
 
@@ -63,42 +65,53 @@ class LastTweets extends Component {
   render() {
     const {tweets, maxId, loading} = this.state
     const user = (this.state.tweets && this.state.tweets.length && this.state.tweets[0].user) || []
+    const removeButton = (
+      <IconButton className={stl.removeButton} tooltip="Remove account" onClick={this.props.onRemove}>
+        <ActionDelete />
+      </IconButton>
+    )
 
     if (tweets) {
-      if (tweets.length) {
-        return (
-          <article className="LastTweets">
+      return (
+        <article className="LastTweets">
+          {removeButton}
 
-            <IconButton className={stl.removeButton} tooltip="Remove account" onClick={this.props.onRemove}>
-              <ActionDelete />
-            </IconButton>
+          { !tweets.length
+            ? <p>Tweets not found.</p>
+            : <section>
+                <TweetUser user={user} />
 
-            <TweetUser user={user} />
+                { tweets.map(tweet => (
+                  <Tweet key={tweet.id} user={user} tweet={tweet}  />
+                )) }
 
-            { tweets.map(tweet => (
-              <Tweet key={tweet.id} user={user} tweet={tweet}  />
-            )) }
-
-            <footer>
-              { loading
-                ? <CircularProgress />
-                : null
-              }
-              { maxId && !loading
-                ? <FlatButton onClick={this.loadMore.bind(this)} label="Load more..." />
-                : null
-              }
-            </footer>
-
-          </article>
-        )
-      } else {
-        return <div>Tweets no found.</div>
-      }
+                <footer className={stl.loadMore}>
+                  { loading
+                    ? <CircularProgress />
+                    : null
+                  }
+                  { maxId && !loading
+                    ? <FlatButton onClick={this.loadMore.bind(this)} label="Load more..." />
+                    : null
+                  }
+                </footer>
+              </section>
+          }
+      </article>)
     }
 
     return <CircularProgress />
   }
+}
+
+LastTweets.propTypes = {
+  screenName: PropTypes.string.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  count: PropTypes.number,
+}
+
+LastTweets.defaultProps = {
+  count: 5,
 }
 
 export default LastTweets

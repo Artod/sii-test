@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import moment from 'moment'
 import twitterText from 'twitter-text'
 
@@ -25,6 +27,10 @@ function Tweet(props) {
       </i>
     </section>*/
   )
+}
+
+Tweet.propTypes = {
+  tweet: PropTypes.any.isRequired,
 }
 
 export default Tweet

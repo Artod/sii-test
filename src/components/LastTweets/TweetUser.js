@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import {CardHeader} from 'material-ui/Card'
 
@@ -14,6 +15,10 @@ function TweetUser(props) {
       avatar={profile_image_url}
     />
   )
+}
+
+TweetUser.propTypes = {
+  user: PropTypes.any.isRequired,
 }
 
 export default TweetUser

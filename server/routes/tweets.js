@@ -16,7 +16,7 @@ var T = new Twit({
 router.get('/:screen_name/:max_id?', cors(), function(req, res, next) {
   var params = {
     screen_name: req.params.screen_name,
-    count: 5,
+    count: req.query.count || 5,
     trim_user: !!req.params.max_id,
     tweet_mode: 'extended',
   }
