@@ -1,8 +1,8 @@
 # Test App Sii
 
-[Link on App](http://app-sii-test.193b.starter-ca-central-1.openshiftapps.com/)
+[Link on deployed App](https://sii-test.herokuapp.com/)
 
-To run the app in the development mode on your local machine, follow these steps:
+To run the app on your local machine in the development mode, follow these steps:
 
 - Clone the repo: `git clone https://github.com/Artod/sii-test.git`
 - Go into the folder: `cd sii-test`
