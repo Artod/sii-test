@@ -1,6 +1,6 @@
 # Test App Sii
 
-[Link on App](http://sii-test-app-sii-test.193b.starter-ca-central-1.openshiftapps.com/)
+[Link on App](http://app-sii-test.193b.starter-ca-central-1.openshiftapps.com/)
 
 To run the app in the development mode on your local machine, follow these steps:
 
