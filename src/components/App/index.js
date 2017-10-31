@@ -70,7 +70,7 @@ class App extends Component {
 
           <section className={stl.flexContainer}>
             { this.state.screenNames.map((screenName, index) => (
-              <LastTweets key={screenName} screenName={screenName} onRemove={ this.removeScreenName.bind(this, screenName) } count="10" />
+              <LastTweets key={screenName} screenName={screenName} onRemove={ this.removeScreenName.bind(this, screenName) } count={10} />
             )) }
           </section>
 
